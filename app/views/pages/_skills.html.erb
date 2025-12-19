@@ -1,0 +1,35 @@
+<% skills = JSON.parse(File.read(Rails.root.join("app/assets/skills.json"))) %>
+
+<section id="skills">
+  <p class="text-2xl sm:text-4xl mt-5 sm:mt-10 text-zinc-300 font-mono">Skills</p>
+  <p class="text-zinc-400 font-mono">
+    Here is a list of all i've played around with. This list could be
+    outdated.
+  </p>
+
+  <div class="p-10 text-zinc-300 font-mono">
+    <div class="flex space-x-16">
+      <div>
+        <p class="text-l sm:text-xl mb-4">Languages</p>
+        <ul class="list-none space-y-2">
+          <% skills.dig("skills", "Languages").each do |skill| %>
+            <li class="flex items-center text-zinc-400">
+              <span class="text-zinc-600 mr-2">✔</span><%= skill %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-l sm:text-xl mb-4">Software and Frameworks</p>
+        <ul class="list-none space-y-2">
+          <% skills.dig("skills", "Software").each do |skill| %>
+            <li class="flex items-center text-zinc-400">
+              <span class="text-zinc-600 mr-2">✔</span><%= skill %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

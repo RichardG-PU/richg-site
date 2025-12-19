@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-title: #c8c8c8;
+  --color-background: #1a1a1a;
+  --color-header-black: #1e1e1e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}

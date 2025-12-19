@@ -1,0 +1,37 @@
+{
+  "skills": {
+    "Languages": [
+      "C",
+      "C++",
+      "C#",
+      "PHP",
+      "JavaScript",
+      "Swift",
+      "Python",
+      "Java",
+      "Lua",
+      "Ruby",
+      "Ruby on Rails",
+      "Bash",
+      "SQL"
+    ],
+    "Software": [
+      "React",
+      "LaTeX",
+      "CLion",
+      "Eclipse",
+      "VS",
+      "VSC",
+      "Git",
+      "GitHub",
+      "X-Code",
+      "WindowsOS",
+      "MacOs",
+      "Linux",
+      "Vue.js",
+      "Svelte",
+      "Notion",
+      "PyCharm"
+    ]
+  }
+}
