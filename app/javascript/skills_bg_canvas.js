@@ -1,8 +1,12 @@
-document.addEventListener("turbo:load", () => {
+function initSkillsCanvas() {
   console.log("skills canvas loaded");
 
   const canvas = document.getElementById("skills-bg");
   if (!canvas) return;
+
+  // Prevent double-init if both DOMContentLoaded and pageshow fire
+  if (canvas.dataset.initialized === "1") return;
+  canvas.dataset.initialized = "1";
 
   const skills = JSON.parse(canvas.dataset.skills || "[]");
   if (!skills.length) return;
@@ -32,7 +36,6 @@ document.addEventListener("turbo:load", () => {
     canvas.style.height = `${H}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    // font sizing like your old code
     const portrait = window.innerHeight > window.innerWidth;
     ctx.font = `bold ${portrait ? 20 : 30}px Verdana`;
   }
@@ -91,23 +94,25 @@ document.addEventListener("turbo:load", () => {
     requestAnimationFrame(step);
   }
 
-  // keep height synced as content changes
   const ro = new ResizeObserver(() => {
     const newH = docHeight();
     if (Math.abs(newH - H) > 8) {
       resize();
-      // keep particles but clamp Y into new height
       for (const p of particles) p.y = Math.min(p.y, H);
     }
   });
   ro.observe(document.body);
 
-  window.addEventListener("resize", () => {
+  function onResize() {
     resize();
     init();
-  });
+  }
+  window.addEventListener("resize", onResize);
 
   resize();
   init();
   step();
-});
+}
+
+document.addEventListener("DOMContentLoaded", initSkillsCanvas);
+window.addEventListener("pageshow", initSkillsCanvas);
